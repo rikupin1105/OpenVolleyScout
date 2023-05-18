@@ -1,0 +1,43 @@
+﻿<UserControl
+    x:Class="OpenVolleyScout.Views.Pages.Analyze"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+    xmlns:prism="http://prismlibrary.com/"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBlock Text="ディレクションチャート" />
+            <TextBlock Text="実装途中です" />
+
+            <Label>チーム</Label>
+            <ComboBox ItemsSource="{Binding Team}" SelectedItem="{Binding SelectedTeam.Value}" />
+
+            <Label Margin="0,20,0,0">選手</Label>
+            <ComboBox ItemsSource="{Binding Players}" />
+
+            <Label Margin="0,20,0,0">セット</Label>
+            <ComboBox>
+                <ComboBoxItem Content="すべて" IsSelected="True" />
+            </ComboBox>
+
+            <Label Margin="0,20,0,0">スキル</Label>
+            <ComboBox ItemsSource="{Binding Skill}" SelectedItem="{Binding SelectedSkill.Value}" />
+        </StackPanel>
+        <Viewbox Grid.Column="1" HorizontalAlignment="Left">
+            <lvc:CartesianChart
+                Width="600"
+                Height="1000"
+                EasingFunction="{x:Null}"
+                Series="{Binding Series}"
+                TooltipPosition="Hidden"
+                XAxes="{Binding XAxes}"
+                YAxes="{Binding YAxes}"
+                ZoomMode="None" />
+        </Viewbox>
+    </Grid>
+</UserControl>

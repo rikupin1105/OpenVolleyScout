@@ -1,0 +1,139 @@
+﻿<UserControl
+    x:Class="OpenVolleyScout.Views.Pages.FormB"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style BasedOn="{StaticResource {x:Type wpfui:DataGrid}}" TargetType="wpfui:DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False" />
+            <Setter Property="CanUserAddRows" Value="False" />
+            <Setter Property="CanUserDeleteRows" Value="False" />
+            <Setter Property="CanUserReorderColumns" Value="False" />
+            <Setter Property="CanUserResizeColumns" Value="False" />
+            <Setter Property="CanUserResizeRows" Value="False" />
+            <Setter Property="IsReadOnly" Value="True" />
+        </Style>
+
+        <Style BasedOn="{StaticResource DefaultDataGridCellStyle}" TargetType="DataGridCell">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style x:Key="DataGridTextCenter" TargetType="TextBlock">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style BasedOn="{StaticResource DefaultDataGridColumnHeaderStyle}" TargetType="DataGridColumnHeader">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <wpfui:DataGrid
+                Grid.Row="1"
+                Grid.RowSpan="1"
+                Grid.Column="1"
+                Margin="0,0,0,10"
+                RowHeaderWidth="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="4*" Header="チーム名" />
+                    <DataGridTextColumn Width="4*" Header="アタック" />
+                    <DataGridTextColumn Width="1*" Header="ブロック" />
+                    <DataGridTextColumn Width="5*" Header="サーブ" />
+                    <DataGridTextColumn Width="4*" Header="サーブレシーブ" />
+                </DataGrid.Columns>
+            </wpfui:DataGrid>
+
+            <wpfui:DataGrid
+                Grid.Row="1"
+                Grid.RowSpan="1"
+                Grid.Column="1"
+                Margin="0,32,0,10"
+                ItemsSource="{Binding FormBModelsHome}"
+                RowHeaderWidth="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Binding="{Binding PlayerNum}" ElementStyle="{StaticResource DataGridTextCenter}" Header="番号" />
+                    <DataGridTextColumn Width="3*" Binding="{Binding PlayerName}" ElementStyle="{StaticResource DataGridTextCenter}" Header="名前" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Attack.Count}" ElementStyle="{StaticResource DataGridTextCenter}" Header="打数" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Attack.Point}" ElementStyle="{StaticResource DataGridTextCenter}" Header="得点" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Attack.Lost}" ElementStyle="{StaticResource DataGridTextCenter}" Header="失点" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Attack.Rate, StringFormat={}{0:F2}%}" ElementStyle="{StaticResource DataGridTextCenter}" Header="決定率" />
+
+                    <DataGridTextColumn Width="*" Binding="{Binding Block.Point}" ElementStyle="{StaticResource DataGridTextCenter}" Header="得点" />
+
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Count}" ElementStyle="{StaticResource DataGridTextCenter}" Header="打数" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Point}" ElementStyle="{StaticResource DataGridTextCenter}" Header="得点" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Lost}" ElementStyle="{StaticResource DataGridTextCenter}" Header="失点" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Effect}" ElementStyle="{StaticResource DataGridTextCenter}" Header="効果" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Rate, StringFormat={}{0:F2}%}" ElementStyle="{StaticResource DataGridTextCenter}" Header="効果率" />
+
+                    <DataGridTextColumn Width="*" Binding="{Binding Reception.Count}" ElementStyle="{StaticResource DataGridTextCenter}" Header="受数" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Reception.Perfect}" ElementStyle="{StaticResource DataGridTextCenter}" Header="優" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Reception.Good}" ElementStyle="{StaticResource DataGridTextCenter}" Header="良" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Reception.Rate, StringFormat={}{0:F2}%}" ElementStyle="{StaticResource DataGridTextCenter}" Header="成功率" />
+                </DataGrid.Columns>
+            </wpfui:DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <wpfui:DataGrid
+                Grid.Row="1"
+                Grid.RowSpan="1"
+                Grid.Column="1"
+                Margin="0,0,0,10"
+                RowHeaderWidth="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="4*" Header="チーム名" />
+                    <DataGridTextColumn Width="4*" Header="アタック" />
+                    <DataGridTextColumn Width="1*" Header="ブロック" />
+                    <DataGridTextColumn Width="5*" Header="サーブ" />
+                    <DataGridTextColumn Width="4*" Header="サーブレシーブ" />
+                </DataGrid.Columns>
+            </wpfui:DataGrid>
+
+
+            <wpfui:DataGrid
+                Grid.Row="1"
+                Grid.RowSpan="1"
+                Grid.Column="1"
+                Margin="0,32,0,10"
+                ItemsSource="{Binding FormBModelsAway}"
+                RowHeaderWidth="0">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Width="*" Binding="{Binding PlayerNum}" ElementStyle="{StaticResource DataGridTextCenter}" Header="番号" />
+                    <DataGridTextColumn Width="3*" Binding="{Binding PlayerName}" ElementStyle="{StaticResource DataGridTextCenter}" Header="名前" />
+
+                    <DataGridTextColumn Width="*" Binding="{Binding Attack.Count}" ElementStyle="{StaticResource DataGridTextCenter}" Header="打数" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Attack.Point}" ElementStyle="{StaticResource DataGridTextCenter}" Header="得点" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Attack.Lost}" ElementStyle="{StaticResource DataGridTextCenter}" Header="失点" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Attack.Rate, StringFormat={}{0:F2}%}" ElementStyle="{StaticResource DataGridTextCenter}" Header="決定率" />
+
+                    <DataGridTextColumn Width="*" Binding="{Binding Block.Point}" ElementStyle="{StaticResource DataGridTextCenter}" Header="得点" />
+
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Count}" ElementStyle="{StaticResource DataGridTextCenter}" Header="打数" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Point}" ElementStyle="{StaticResource DataGridTextCenter}" Header="得点" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Lost}" ElementStyle="{StaticResource DataGridTextCenter}" Header="失点" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Effect}" ElementStyle="{StaticResource DataGridTextCenter}" Header="効果" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Serve.Rate, StringFormat={}{0:F2}%}" ElementStyle="{StaticResource DataGridTextCenter}" Header="効果率" />
+
+                    <DataGridTextColumn Width="*" Binding="{Binding Reception.Count}" ElementStyle="{StaticResource DataGridTextCenter}" Header="受数" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Reception.Perfect}" ElementStyle="{StaticResource DataGridTextCenter}" Header="優" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Reception.Good}" ElementStyle="{StaticResource DataGridTextCenter}" Header="良" />
+                    <DataGridTextColumn Width="*" Binding="{Binding Reception.Rate, StringFormat={}{0:F2}%}" ElementStyle="{StaticResource DataGridTextCenter}" Header="成功率" />
+                </DataGrid.Columns>
+            </wpfui:DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,39 @@
+﻿<UserControl
+    x:Class="OpenVolleyScout.Views.Pages.TeamSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <StackPanel>
+
+        <Label Margin="5,0,0,0">試合名</Label>
+        <wpfui:TextBox Grid.Row="1" Grid.Column="0" Margin="0,0,5,0" Text="{Binding MatchName.Value}" />
+        <Grid Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="ホームチーム" />
+            <TextBlock Grid.Column="1" Text="アウェイチーム" />
+
+            <wpfui:TextBox
+                Grid.Row="1"
+                Grid.Column="0"
+                Margin="0,0,5,0"
+                PlaceholderText="ホームチーム名"
+                Text="{Binding HomeTeamName.Value}" />
+            <wpfui:TextBox
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="5,0,0,0"
+                PlaceholderText="アウェイチーム名"
+                Text="{Binding AwayTeamName.Value}" />
+        </Grid>
+    </StackPanel>
+</UserControl>

@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<LangVersion>11.0</LangVersion>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.0-beta.710" />
+		<PackageReference Include="Prism.Core" Version="8.1.97" />
+		<PackageReference Include="Prism.Unity" Version="8.1.97" />
+		<PackageReference Include="ReactiveProperty" Version="9.1.2" />
+		<PackageReference Include="WPF-UI" Version="2.0.3" />
+		<PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Assets\" />
+		<Folder Include="Helpers\" />
+		<Folder Include="Services\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\OpenVolleyScoutParser\OpenVolleyScout.Parser.csproj" />
+	</ItemGroup>
+
+</Project>
